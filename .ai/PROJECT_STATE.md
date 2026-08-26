@@ -3,7 +3,7 @@
 ## 1. 项目概况
 - **项目名称**：DSH Multi-Model Multi-Agent Collaborative Development Environment
 - **当前状态**：初始化完成，多 Agent 协作环境与持久化系统已就绪
-- **基础环境**：DeepSeek Harness (0.1.1-rc.2) + CLIProxyAPI (CPA: `http://192.168.5.102:8317/v1`)
+- **基础环境**：DeepSeek Harness (0.1.1-rc.2) + CLIProxyAPI (CPA Proxy)
 - **默认调度模式**：多模型多 Agent 协作模式 (`multi-agent` preset)
 
 ---

@@ -11,6 +11,5 @@ build/
 .cache/
 
 # Wine & Binary large objects
-uuyc/wineprefix/
-uuyc/.state/
+uuyc/
 *.exe
