@@ -14,11 +14,12 @@
 1. **采用 DSH 原生 `dsh-tool-subagent` + `dsh-agent-presets` 机制**：
    - 经源码审计，DSH 0.1.1-rc.2 已具备完整的 `prepareContinuable`、`agentOptions`（独立 provider/model 绑定）、`persona` 注入、`toolFilter` 权限隔离及 `send_message` 会话接续能力。
    - 原生架构直接运行在 Cordis 微内核之上，无需引入 `pi2dsh` 或第三方适配层，避免多层包装带来的上下文丢失与性能损耗。
-2. **通过 CPA 代理 (`sub-all`) 分流不同模型**：
-   - Orchestrator 与 Architect: `sub-all/gpt-5.6-luna`
+2. **通过 CPA 代理 (`sub-all`) 分流不同模型与推理深度**：
+   - Orchestrator: `sub-all/gpt-5.6-sol` (推理深度: Max)
+   - GPT Core / Architect: `sub-all/gpt-5.6-luna` (推理深度: Max)
    - Gemini Frontend: `sub-all/gemini-3.7-flash-high`
-   - Implementer: `sub-all/deepseek-v4-pro`
-   - Reviewer: `sub-all/claude-opus-4-6-thinking`
+   - Implementer: `sub-all/gemini-3.7-flash-high`
+   - Reviewer: `sub-all/claude-opus-4-6-thinking` (推理深度: xhigh)
 3. **权限隔离**：
    - 对 Reviewer 工具层增加 `toolFilter: deny: [write, edit]`，从物理工具层面保证只读审查。
 4. **共享记忆机制**：

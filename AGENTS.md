@@ -14,7 +14,8 @@
                                             ▼
                              ┌───────────────────────────────┐
                              │         Orchestrator          │
-                             │   (CPA: sub-all/gpt-5.6-luna) │
+                             │   (CPA: sub-all/gpt-5.6-sol)  │
+                             │      推理深度: Max            │
                              │  Task Decomposition & Router  │
                              └──────┬───┬───────┬────┬───────┘
                                     │   │       │    │
@@ -22,7 +23,8 @@
             ▼                           ▼       ▼                            ▼
 ┌───────────────────────┐   ┌───────────────────────┐   ┌───────────────────────┐   ┌───────────────────────┐
 │   GPT Core / Arch     │   │    Gemini Frontend    │   │      Implementer      │   │       Reviewer        │
-│(sub-all/gpt-5.6-luna) │   │(gemini-3.7-flash-high)│   │(sub-all/deepseek-v4-p)│   │(claude-opus-4-6-think)│
+│ (sub-all/gpt-5.6-luna)│   │(gemini-3.7-flash-high)│   │(gemini-3.7-flash-high)│   │(claude-opus-4-6-think)│
+│    推理深度: Max      │   │                       │   │                       │   │    推理深度: xhigh    │
 │  Architecture & Logic │   │  UI / UX / Frontend   │   │ Concrete Code & Test  │   │ Independent Code Audit│
 └───────────────────────┘   └───────────────────────┘   └───────────────────────┘   └───────────────────────┘
             │                           │                           │                           │
@@ -37,13 +39,13 @@
 
 ### 角色配置与模型绑定矩阵
 
-| Agent 角色 | 核心职责 | 调度工具名称 | CPA 绑定模型 (`provider/modelId`) | 工具权限与沙箱策略 |
-| :--- | :--- | :--- | :--- | :--- |
-| **Orchestrator** | 需求理解、任务拆解、Subagent 调度、并行控制、冲突消解、最终集成与测试 | 主 Agent / 顶层会话 | `sub-all/gpt-5.6-luna` | 全工具访问（Shell、文件读写、子代理调度、任务管理） |
-| **GPT Core / Architect** | 软件架构设计、核心接口与数据模型、复杂算法、疑难 Bug 根因分析、关键重构 | `subagent_gpt_core` | `sub-all/gpt-5.6-luna` | 全工具访问，专注系统设计与核心代码 |
-| **Gemini Frontend** | Web 前端、UI/UX 设计、React/Vue/CSS/Tailwind、响应式布局、动效与视觉一致性 | `subagent_gemini_frontend` | `sub-all/gemini-3.7-flash-high` | 全工具访问，目录所有权限定于前端相关目录 |
-| **Implementer** | 冻结设计后的代码实现、业务功能、CRUD、工具脚本、Bug 修复、单元/集成测试 | `subagent_implementer` | `sub-all/deepseek-v4-pro` | 全工具访问，专注具体代码编写与验证 |
-| **Reviewer** | 独立代码审查、逻辑 Bug、边界条件、并发安全、安全性审查、测试覆盖率检查 | `subagent_reviewer` | `sub-all/claude-opus-4-6-thinking` | **只读权限**（禁止直接调用 `write` / `edit`，仅输出审查 findings） |
+| Agent 角色 | 核心职责 | 调度工具名称 | CPA 绑定模型 (`provider/modelId`) | 推理深度 (Reasoning Effort) | 工具权限与沙箱策略 |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| **Orchestrator** | 需求理解、任务拆解、Subagent 调度、并行控制、冲突消解、最终集成与测试 | 主 Agent / 顶层会话 | `sub-all/gpt-5.6-sol` | **Max** | 全工具访问（Shell、文件读写、子代理调度、任务管理） |
+| **GPT Core / Architect** | 软件架构设计、核心接口与数据模型、复杂算法、疑难 Bug 根因分析、关键重构 | `subagent_gpt_core` | `sub-all/gpt-5.6-luna` | **Max** | 全工具访问，专注系统设计与核心代码 |
+| **Gemini Frontend** | Web 前端、UI/UX 设计、React/Vue/CSS/Tailwind、响应式布局、动效与视觉一致性 | `subagent_gemini_frontend` | `sub-all/gemini-3.7-flash-high` | 默认/标准 | 全工具访问，目录所有权限定于前端相关目录 |
+| **Implementer** | 冻结设计后的代码实现、业务功能、CRUD、工具脚本、Bug 修复、单元/集成测试 | `subagent_implementer` | `sub-all/gemini-3.7-flash-high` | 默认/标准 | 全工具访问，专注具体代码编写与验证 |
+| **Reviewer** | 独立代码审查、逻辑 Bug、边界条件、并发安全、安全性审查、测试覆盖率检查 | `subagent_reviewer` | `sub-all/claude-opus-4-6-thinking` | **xhigh** | **只读权限**（禁止直接调用 `write` / `edit`，仅输出审查 findings） |
 
 ---
 

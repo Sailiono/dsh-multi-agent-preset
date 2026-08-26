@@ -10,13 +10,13 @@
 
 ## 2. 协作角色矩阵与当前会话绑定
 
-| 角色 | 调度工具 | CPA 实际模型 | 当前子会话 ID (Continuable) | 状态 |
-| :--- | :--- | :--- | :--- | :--- |
-| **Orchestrator** | Top-level Session | `sub-all/gpt-5.6-luna` | *(Top-level session)* | Active |
-| **GPT Core / Architect** | `subagent_gpt_core` | `sub-all/gpt-5.6-luna` | - | Ready |
-| **Gemini Frontend** | `subagent_gemini_frontend` | `sub-all/gemini-3.7-flash-high` | - | Ready |
-| **Implementer** | `subagent_implementer` | `sub-all/deepseek-v4-pro` | - | Ready |
-| **Reviewer** | `subagent_reviewer` | `sub-all/claude-opus-4-6-thinking` | - | Ready |
+| 角色 | 调度工具 | CPA 实际模型 | 推理深度 | 当前子会话 ID (Continuable) | 状态 |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| **Orchestrator** | Top-level Session | `sub-all/gpt-5.6-sol` | **Max** | *(Top-level session)* | Active |
+| **GPT Core / Architect** | `subagent_gpt_core` | `sub-all/gpt-5.6-luna` | **Max** | - | Ready |
+| **Gemini Frontend** | `subagent_gemini_frontend` | `sub-all/gemini-3.7-flash-high` | 标准 | - | Ready |
+| **Implementer** | `subagent_implementer` | `sub-all/gemini-3.7-flash-high` | 标准 | - | Ready |
+| **Reviewer** | `subagent_reviewer` | `sub-all/claude-opus-4-6-thinking` | **xhigh** | - | Ready |
 
 ---
 
