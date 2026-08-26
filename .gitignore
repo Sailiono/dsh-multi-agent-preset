@@ -1,0 +1,16 @@
+# Logs and temporary files
+*.log
+*.tmp
+*.bak
+.DS_Store
+
+# Node & Package Managers
+node_modules/
+dist/
+build/
+.cache/
+
+# Wine & Binary large objects
+uuyc/wineprefix/
+uuyc/.state/
+*.exe

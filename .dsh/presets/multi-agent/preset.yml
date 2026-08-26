@@ -1,0 +1,3 @@
+name: 多模型多Agent协作模式
+description: 具备由 CPA 模型池驱动的 Orchestrator、GPT Core / Architect、Gemini Frontend、Implementer 与 Reviewer 全套持续多 Agent 协作系统。
+order: 1
