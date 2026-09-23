@@ -38,3 +38,8 @@
 - `TASK-003-B` (Frontend) 与 `TASK-003-C` (Implementer) 均依赖 `TASK-003-A` (Architect 接口冻结)。
 - `TASK-003-B` 与 `TASK-003-C` 互无依赖，**可并行执行**。
 - `TASK-003-D` (Reviewer) 依赖 `TASK-003-B` 与 `TASK-003-C` 全部完成。
+
+## 仓库安全监控
+- [x] **TASK-004: 部署敏感信息提交检查**
+  - 状态：`[DONE]`
+  - 验证：扫描器历史、分支、脱敏、文档和通知去重测试通过；云端工作流单独验证。
